@@ -24,9 +24,6 @@ void knap(int tot, int i, int cost)
 	if(tot<0||i<-1)
 	return;
 
-
-	
-
 	//NOTE: it is i=-1 so that i=0 pulls of.. i-1, cost+weight[0];
 	if(i==-1 || tot==0 ) //Even if total is not 0, and last item then also we see the result
 	{ if(cost>best)
@@ -35,17 +32,12 @@ void knap(int tot, int i, int cost)
 		return;
 	}	
 	
-	
-	
 //NOTE: The order is important
 	
 	knap(tot,i-1,cost);					//Case2: Excluding element, Item not included
-
-	knap(tot-weight[i],i-1,cost+val[i]);	//Case1: Including only once, Item included
+	knap(tot-weight[i],i-1,cost+val[i]);	//Case1: Including only once, Item included	
+	//Not like coin change where each item can be taken more than once, IF item chosen, then also index -1.. In coin: index remains.
 	
-//Not like coin change where each item can be taken more than once, IF item chosen, then also index -1.. In coin: index remains.
-	
-
 	return;
 
 }
@@ -68,8 +60,6 @@ int main()
 	
 	cout<<"The maximum value of things he can carry is :"<<best;
 
-			
-			
 	t=clock()-t;
 	double time_taken = ((double)t)/CLOCKS_PER_SEC; // in seconds
  
